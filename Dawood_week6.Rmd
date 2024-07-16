@@ -1,0 +1,124 @@
+---
+title: "Dawood_week6"
+output: html_document
+date: "2024-07-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Question 1
+
+1. Recalling your exciting statistical discoveries on penguin flipper length relationship to sex, species, and island, you decide to make some publication quality figures to demonstrate your findings. Use the `ggplot2` package to make the graphs and the `palmerpenguins` package for the “penguins” data.
+
+# Part A
+
+1A. Begin by creating a violin plot with sex on the x axis and flipper length on the y axis. The violin blobs’ fill color should differ between the two sexes (default colors are fine!).
+
+```{r Question 1A part a, echo=TRUE}
+# Load library
+library(palmerpenguins)
+
+# Check structure
+str(penguins)
+
+# Create an object to fliter just male and female
+peng_df0 <- dplyr::filter(.data = penguins, sex == "female" | sex == "male")
+```
+
+```{r Question 1A part b, echo=TRUE}
+# Load library
+library(ggplot2)
+
+# Load library 
+library(palmerpenguins)
+
+# Check structure
+str(penguins)
+
+# Make a plot where the color and y-axis are mapped to the same variable ONLY FILL
+peng_df01 <- ggplot(data = peng_df0, mapping = aes(x = sex, y = flipper_length_mm, fill = sex)) +
+  # Make it a violin plot
+  geom_violin()
+peng_df01
+```
+
+# Part B
+
+1B. That graph was a fine first pass but you realize you’ve neglected to include penguin species information in the graph! Facet the graph to divide the plot into three panels (either rows or columns are fine)—one panel per species of penguin. Also, remove the gray background color (but keep the black axis lines!) and add custom axis titles that remove the underscores (“_”) in the raw column names.
+
+```{r Question 1B part a, echo=TRUE}
+# Load library 
+str(penguins)
+
+# Create an object to fliter just male and female
+peng_df1 <- dplyr::filter(.data = penguins, sex == "female" | sex == "male")
+```
+
+```{r Question 1B part b, echo=TRUE}
+# Make a plot where the color and y-axis are mapped to the same variable ONLY FILL
+peng_df2 <- ggplot(data = peng_df1, mapping = aes(x = sex, y = flipper_length_mm, fill = sex)) +
+  # Make it a violin plot
+  geom_violin() +
+  # Add custom axis labels 
+  labs(x = "Sex", y = "Flipper length(mm)") +
+  # Remove panel background
+  theme(panel.background = element_blank(),
+        # Keep black axis lines
+        axis.line = element_line(color = "black")) +
+  facet_grid(. ~ species)
+peng_df2
+```
+
+# Question 2
+
+2. Remembering your colleague’s suggestion of evaluating the effect of island you decide to make a second graph where you visualize penguin flipper length at the three islands.
+
+# Part A
+
+2A. Create a violin plot where island is on the y axis and flipper length is on the x axis. Make the fill color of each violin different between islands. Remove the gray background color, keep black axis lines, and customize the axis titles so this graph visually matches your first graph.
+
+```{r Question 2A, echo=TRUE}
+# Make a plot where the color and y-axis are mapped to the same variable ONLY FILL
+peng_df3 <- ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = island, fill = island)) +
+  # Make it a violin plot
+  geom_violin() +
+  # Add custom axis labels 
+  labs(x = "Flipper length(mm)", y = "Island") +
+  # Remove panel background
+  theme(panel.background = element_blank(),
+        # Keep black axis lines
+        axis.line = element_line(color = "black"))
+peng_df3
+```
+
+# Part B
+
+2B. After making this graph you realize you are accidentally re-using the default `ggplot2` red and blue colors. This could be very confusing to your audience so you definitely need to address it. Visit the Coolors website (coolors.co/palettes/trending) and pick a custom color for each of the three islands. Manually set the violin fill to give each island one of these three colors.
+
+```{r Question 2B, echo=TRUE}
+# Make a plot where the color and y-axis are mapped to the same variable ONLY FILL
+peng_df4 <- ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = island, fill = island)) +
+  # Make it a violin plot
+  geom_violin() +
+  # Add custom axis labels 
+  labs(x = "Flipper length(mm)", y = "Island") +
+  # Remove panel background
+  theme(panel.background = element_blank(),
+        # Keep black axis lines
+        axis.line = element_line(color = "black")) +
+  # Customize colors
+  scale_fill_manual(values = c("Torgersen" = "#cdb4db", "Dream" = "#ffafcc", "Biscoe" = "#a2d2ff"))
+peng_df4
+```
+
+# Question 3
+
+3. Your two graphs are looking great! Now you just need to combine them into one file for ease of sharing to your peers. Use the `cowplot` package to put both graphs (the species by sex graph and the island graph) into one plot. These can be either side-by-side or one on top of the other depending on your preference.
+
+```{r Question 3, echo=TRUE}
+# Combine two graphs in one file using cowplot
+cowplot::plot_grid(peng_df2, peng_df4, ncol = 1, nrow = 2)
+```
+
