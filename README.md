@@ -1,4 +1,4 @@
-## Hii! I'm Juliana Dawood (she/her)
+## Hi! I'm Juliana Dawood (she/her)
 
 ### Welcome :)
 
