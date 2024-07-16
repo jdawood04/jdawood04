@@ -1,0 +1,159 @@
+---
+title: "Function Draft #2"
+output: html_document
+date: "2024-06-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Function #1
+
+This code loads the **AdvancedBasketballStats** package. The **team_stats** function is designed to aggregate individual player statistics into team statistics. This function can be useful in several scenarios, such as when analyzing the overall performance of a basketball team or when comparing team performance metrics across different games or seasons. This function is a valuable tool for basketball analysts, coaches, and enthusiasts who want to gain insights into team performance from individual player data.
+
+
+### Argument #1
+
+<u>Argument Name</u>: **df1**
+
+<u>Expected Type</u>: **Data Frame**
+
+<u>Purpose</u>: _Represents individual player statistics or individual defensive statistics._
+
+<u>Format</u>: **data_adjustment()** function
+
+\
+
+```{r, Function #1a, echo=TRUE}
+# Load library
+library(AdvancedBasketballStats)
+```
+
+```{r, Function #1b, echo=FALSE}
+# Selected team and player using function: team_stats
+player_stats <- data.frame("name" = c("Brown Jaylen","Celtics"),
+# Games played
+"G" = c(67,0), 
+# Games started
+"GS" = c(62,0), 
+# Minutes played
+"MP" = c(2316,0),
+# Field goals made
+"FG" = c(643,0), 
+# Field goals attempts
+"FGA" = c(1303,0),
+# Field goal percentage
+"Percentage FG" = c(0.493,0), 
+# Three-point field goals made
+"3P" = c(148,0), 
+# Three-point field goal attempts
+"3PA" = c(425,0),
+# Three-point field goal percentage
+"Percentage 3P" = c(0.348,0), 
+# Two-point field goals made
+"2P" = c(495,0), 
+# Two-point field goal attempts
+"2PA" = c(878,0),
+# Two-point field goal percentage
+"Percentage 2P" = c(0.564,0),
+# Free throws made
+"FT" = c(264,0), 
+# Free throw attempts
+"FTA FG" = c(381,0),
+# Free throw percentage
+"Percentage FT" = c(0.693,0), 
+# Offensive rebounds
+"ORB" = c(66,0),
+# Defensive rebounds
+"DRB" = c(459,0),
+# Total rebounds 
+"TRB" = c(525,0), 
+# Assists
+"AST" = c(684,0), 
+# Steals
+"STL" = c(78,0),
+# Blocks
+"BLK" = c(36,0),
+# Turnovers
+"TOV" = c(261,0), 
+# Personal fouls
+"PF" = c(118,0),
+# Points scored
+"PTS" = c(1698,0), 
+# Plus/minus statistic
+"+/-" = c(0,0))
+```
+
+```{r, Function #1c, echo=TRUE}
+# Check the head
+head(player_stats)
+```
+
+```{r, Function #1d, echo=TRUE}
+# Calculate the team statistics based on the individual player statistics provided in player_stats
+team_stats(df1 = player_stats)
+```
+
+# Function #2
+
+This code loads the **NBAloveR** package. The **getTeamHistory** function is crucial for obtaining comprehensive historical performance data for a specific NBA team. This data can serve various stakeholders, including analysts, coaches, fans, and media professionals, by providing valuable insights into team dynamics, performance trends, and strategic opportunities. Whether for detailed analysis, strategic planning, comparative studies, or fan engagement purposes, **getTeamHistory** offers essential information to deepen understanding and appreciation of a team's journey in the NBA.
+
+
+### Argument #2
+
+<u>Argument Name</u>: **team_code**
+
+<u>Type</u>: **String** (character vector)
+
+<u>Length</u>: _Exactly **3** characters_
+
+Here, **"bos"** is a string representing the team code for the Boston Celtics.
+The function **getTeamHistory** takes **team_code** as an argument. The argument **team_code = "bos"** passes the string "bos" to the function, which uses it to fetch the historical data for the Boston Celtics.
+
+<u>Purpose</u>: To uniquely identify an NBA team for which historical data is to be fetched by the **getTeamHistory()** function.
+
+\
+
+```{r Function #2, echo=TRUE}
+# Load library
+library(NBAloveR)
+
+# Display Boston Celtics team history
+BostonCeltics <- getTeamHistory(team_code = "bos")
+
+# Check head
+head(BostonCeltics)
+```
+
+# Function #3
+
+This code loads the **NBAloveR** package. The **getTeamSalary** function provides detailed salary information for players on a specific NBA team. This information is essential for various aspects of team management, financial planning, and strategic decision-making, by providing transparency into player earnings and financial aspects of team operations. Whether for strategic decision-making, financial planning, player evaluation, or fan engagement purposes, **getTeamSalary** offers essential information to deepen understanding and facilitate informed decisions related to NBA team management.
+
+
+### Argument #3
+
+<u>Argument Name</u>: **team_code**
+
+<u>Type</u>: **String** (character vector)
+
+<u>Length</u>: _Exactly **3** characters_
+
+Here, **"bos"** is a string representing the team code for the Boston Celtics.
+The function **getTeamSalary** takes **team_code** as an argument. The argument **team_code = "bos"** passes the string **"bos"** to the function, which uses it to fetch the historical data for the Boston Celtics.
+
+<u>Purpose</u>: To uniquely identify an NBA team for which historical data is to be fetched by the **getTeamSalary()** function.
+
+\
+
+```{r Function #3, echo=TRUE}
+# Load library
+library(NBAloveR)
+
+# Boston Celtics team salary with adjustments
+salary_bos <- getTeamSalary(team_code = "bos")
+
+# Check head
+head(salary_bos)
+```
+
