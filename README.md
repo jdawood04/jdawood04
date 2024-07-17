@@ -2,7 +2,7 @@
 
 ### Welcome :)
 
-Welcome to my GitHub profile! I'm currently an undergraduate student at Stonehill College. My longterm goals is to become an Optometrist with my own private practice by fufilling a OD degree in New England of Optometry school (NECO). Check out my [portfolio](https://github.com/jdawood04/portfolio) and public repositories for examples of my work.
+Welcome to my GitHub profile! I'm currently an undergraduate student at Stonehill College. My longterm goals is to become an Optometrist with my own private practice by fufilling a OD degree in New England of Optometry school (NECO). Check out my [portfolio](https://github.com/jdawood04/R-portfolio) and public repositories for examples of my work.
 
 <!--
 **jdawood04/jdawood04** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
